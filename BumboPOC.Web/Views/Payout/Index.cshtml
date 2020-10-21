@@ -23,7 +23,8 @@
             <tr>
 
                 <td>
-                    <div class="float-sm-left">@user.Name</div><br>
+                    <div class="float-sm-left"><a asp-controller="Payout"
+   asp-action="Detail" asp-route-id="@user.Id">@user.Name</a></div><br>
                     <div class="float-sm-left text-muted">@user.Afdeling</div><br>
 
                 </td>

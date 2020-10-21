@@ -23,7 +23,7 @@ namespace BumboPOC.Web.Controllers
 
             var user = Data.Models.User.Get(id);
 
-            return View(workedHours);
+            return View(user);
         }
     }
 }
