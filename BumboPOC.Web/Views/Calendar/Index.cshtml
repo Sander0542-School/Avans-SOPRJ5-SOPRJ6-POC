@@ -1,0 +1,52 @@
+﻿@model List<UserCalendarsModel>
+
+@{
+    ViewData["Title"] = "Agenda";
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Naam</th>
+            <th>KPU</th>
+            <th>Maandag</th>
+            <th>Dinsdag</th>
+            <th>Woensdag</th>
+            <th>Donderdag</th>
+            <th>Vrijdag</th>
+            <th>Zaterdag</th>
+            <th>Zondag</th>
+            <th>Totaal</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var userCalendar in Model)
+        {
+            <tr>
+                <td>
+                    @userCalendar.User.Name
+                    <br />
+                    @userCalendar.User.Afdeling
+                </td>
+                <td>@userCalendar.User.KPU</td>
+
+                @foreach (DayOfWeek day in userCalendar.DaysOfWeek)
+                {
+                    <td>
+                        @if (userCalendar.Calendars.Exists(c => c.Date.DayOfWeek == day))
+                        {
+                            @Html.DisplayFor(modelItem => userCalendar.Calendars.FirstOrDefault(c => c.Date.DayOfWeek == day).StartTime)
+                            <span>-</span>
+                            @Html.DisplayFor(modelItem => userCalendar.Calendars.FirstOrDefault(c => c.Date.DayOfWeek == day).EndTime)
+                            <br />
+                            @userCalendar.Calendars.FirstOrDefault(c => c.Date.DayOfWeek == day).Duration().TotalMinutes;
+                        }
+                    </td>
+                }
+
+                <td>@userCalendar.Calendars.Sum(c => c.Duration().TotalMinutes)</td>
+            </tr>
+        }
+    </tbody>
+</table>

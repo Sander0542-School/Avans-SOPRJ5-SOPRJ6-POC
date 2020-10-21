@@ -1,0 +1,53 @@
+﻿@model List<BumboPOC.Web.Data.Models.User>
+
+@{
+    ViewData["Title"] = "Uitbetaling";
+}
+
+<div class="text-center">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Naam</th>
+                <th scope="col">KPU</th>
+                <th scope="col">Week 1</th>
+                <th scope="col">Week 2</th>
+                <th scope="col">Week 3</th>
+                <th scope="col">Week 4</th>
+                <th scope="col">Totaal aantal uren</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model)
+            {
+            <tr>
+
+                <td>
+                    <div class="float-sm-left">@user.Name</div><br>
+                    <div class="float-sm-left text-muted">@user.Afdeling</div><br>
+
+                </td>
+                <td>@user.KPU</td>
+                <td>@user.WorkedHours().Where(c => c.Date.WeekNumber() == 1).Sum(c => c.Duration().TotalHours)</td>
+                <td>@user.WorkedHours().Where(c => c.Date.WeekNumber() == 2).Sum(c => c.Duration().TotalHours)</td>
+                <td>@user.WorkedHours().Where(c => c.Date.WeekNumber() == 3).Sum(c => c.Duration().TotalHours)</td>
+                <td>@user.WorkedHours().Where(c => c.Date.WeekNumber() == 4).Sum(c => c.Duration().TotalHours)</td>
+                <td>@user.WorkedHours().Where(c => c.Date.Month == 1).Sum(c => c.Duration().TotalHours)</td>
+
+            </tr>
+            }
+
+
+
+        </tbody>
+    </table>
+</div>
+
+<scr
+$('#example tbody').on('click', 'tr', function () {
+
+    var data = table.row( this ).data();
+
+    alert( 'You clicked on '+data[0]+'\'s row' );
+
+} );

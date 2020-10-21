@@ -1,0 +1,72 @@
+﻿@model BumboPOC.Web.Data.Models.User
+
+@{
+    ViewData["Title"] = "Uitbetaling - detail";
+}
+
+
+<div class="d-flex">
+    <div class="p-2"><h1>Uitbetaling - Gert-jan Duins</h1></div>
+    <div class="ml-auto p-2"><button type="button" class="btn btn-primary">Terug naar overzicht</button></div>
+</div>
+<div class="text-center">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Week nr.</th>
+                <th scope="col">Extra uren</th>
+                <th scope="col">Maandag</th>
+                <th scope="col">Dinsdag</th>
+                <th scope="col">Woensdag</th>
+                <th scope="col">Donderdag</th>
+                <th scope="col">Vrijdag</th>
+                <th scope="col">Zaterdag</th>
+                <th scope="col">Zondag</th>
+                <th scope="col">Totaal gewerkte uren</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var week in Model.Calendars())
+            {
+            <tr>
+                <th>32 </th>
+                <th>0</th>
+                <th>
+                    <div class="float-sm-left"><i class="fas fa-store"></i>8:30 - 17:00</div><br>
+                    <div class="float-sm-left text-muted"><i class="fas fa-coffee"></i>1:00</div><br>
+                </th>
+                <th>
+                    <div class="float-sm-left"><i class="fas fa-store"></i>8:30 - 17:00</div><br>
+                    <div class="float-sm-left text-muted"><i class="fas fa-coffee"></i>1:00</div><br>
+                </th>
+                <th>
+                    <div class="float-sm-left"><i class="fas fa-store"></i>8:30 - 17:00</div><br>
+                    <div class="float-sm-left text-muted"><i class="fas fa-coffee"></i>1:00</div><br>
+                </th>
+                <th>
+                    <div class="float-sm-left"><i class="fas fa-store"></i>8:30 - 17:00</div><br>
+                    <div class="float-sm-left text-muted"><i class="fas fa-coffee"></i>1:00</div><br>
+                </th>
+                <th>
+                    <div class="float-sm-left"><i class="fas fa-store"></i>8:30 - 17:00</div><br>
+                    <div class="float-sm-left text-muted"><i class="fas fa-coffee"></i>1:00</div><br>
+                </th>
+                <th>
+                    <div class="float-sm-left"><i class="fas fa-store"></i>8:30 - 17:00</div><br>
+                    <div class="float-sm-left text-muted"><i class="fas fa-coffee"></i>1:00</div><br>
+                </th>
+                <th>
+                    <div class="float-sm-left"><i class="fas fa-store"></i>8:30 - 17:00</div><br>
+                    <div class="float-sm-left text-muted"><i class="fas fa-coffee"></i>1:00</div><br>
+                </th>
+                <th>
+                    <div class="float-sm-left"><i class="fas fa-store"></i>8:30 - 17:00</div><br>
+                    <div class="float-sm-left text-muted"><i class="fas fa-coffee"></i>1:00</div><br>
+                </th>
+                <th>10:30</th>
+            </tr>
+            }
+
+        </tbody>
+    </table>
+</div>

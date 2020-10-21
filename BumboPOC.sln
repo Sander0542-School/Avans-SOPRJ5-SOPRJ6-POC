@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30523.141
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BumboPOC.Web", "BumboPOC.Web\BumboPOC.Web.csproj", "{0387FCB1-FD74-4FAA-92BA-43881E543561}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0387FCB1-FD74-4FAA-92BA-43881E543561}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0387FCB1-FD74-4FAA-92BA-43881E543561}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0387FCB1-FD74-4FAA-92BA-43881E543561}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0387FCB1-FD74-4FAA-92BA-43881E543561}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {95E46FE9-0F72-4165-B89D-45803FB96268}
+	EndGlobalSection
+EndGlobal
