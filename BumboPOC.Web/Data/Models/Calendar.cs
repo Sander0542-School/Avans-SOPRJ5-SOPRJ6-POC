@@ -30,6 +30,13 @@ namespace BumboPOC.Web.Data.Models
             return EndTime.Subtract(StartTime);
         }
 
+        public TimeSpan BreakTime()
+        {
+            int terms = (int)Math.Floor(Duration().TotalMinutes / 270);
+
+            return new TimeSpan(0, terms * 30, 0);
+        }
+
         public static Calendar Get(int id)
         {
             return All().Find(wh => wh.Id == id);

@@ -40,12 +40,12 @@
                             <span>-</span>
                             @Html.DisplayFor(modelItem => userCalendar.Calendars.FirstOrDefault(c => c.Date.DayOfWeek == day).EndTime)
                             <br />
-                            @userCalendar.Calendars.FirstOrDefault(c => c.Date.DayOfWeek == day).Duration().TotalMinutes;
+                            @userCalendar.Calendars.FirstOrDefault(c => c.Date.DayOfWeek == day).BreakTime().TotalHours;
                         }
                     </td>
                 }
 
-                <td>@userCalendar.Calendars.Sum(c => c.Duration().TotalMinutes)</td>
+                <td>@userCalendar.Calendars.Sum(c => c.Duration().TotalHours)</td>
             </tr>
         }
     </tbody>
