@@ -1,4 +1,4 @@
-﻿@model BumboPOC.Web.Data.Models.User
+﻿@model BumboPOC.Web.Models.UserDaysModel
 
 @{
     ViewData["Title"] = "Uitbetaling - detail";
@@ -7,7 +7,8 @@
 
 <div class="d-flex">
     <div class="p-2"><h1>Uitbetaling - Gert-jan Duins</h1></div>
-    <div class="ml-auto p-2"><button type="button" class="btn btn-primary">Terug naar overzicht</button></div>
+    <div class="ml-auto p-2"><a asp-controller="Payout"
+   asp-action="Index" >Terug naar overzicht</a></div>
 </div>
 <div class="text-center">
     <table class="table">
@@ -26,46 +27,31 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var week in Model.Calendars())
+            @foreach (var week in Model.User.WorkedHours().Where(d => d.Date.Month == 1).GroupBy(c => c.Date.WeekNumber()))
             {
+                
+
+
             <tr>
-                <th>32 </th>
+                <th>@week.Key </th>
                 <th>0</th>
-                <th>
-                    <div class="float-sm-left"><i class="fas fa-store"></i>8:30 - 17:00</div><br>
-                    <div class="float-sm-left text-muted"><i class="fas fa-coffee"></i>1:00</div><br>
-                </th>
-                <th>
-                    <div class="float-sm-left"><i class="fas fa-store"></i>8:30 - 17:00</div><br>
-                    <div class="float-sm-left text-muted"><i class="fas fa-coffee"></i>1:00</div><br>
-                </th>
-                <th>
-                    <div class="float-sm-left"><i class="fas fa-store"></i>8:30 - 17:00</div><br>
-                    <div class="float-sm-left text-muted"><i class="fas fa-coffee"></i>1:00</div><br>
-                </th>
-                <th>
-                    <div class="float-sm-left"><i class="fas fa-store"></i>8:30 - 17:00</div><br>
-                    <div class="float-sm-left text-muted"><i class="fas fa-coffee"></i>1:00</div><br>
-                </th>
-                <th>
-                    <div class="float-sm-left"><i class="fas fa-store"></i>8:30 - 17:00</div><br>
-                    <div class="float-sm-left text-muted"><i class="fas fa-coffee"></i>1:00</div><br>
-                </th>
-                <th>
-                    <div class="float-sm-left"><i class="fas fa-store"></i>8:30 - 17:00</div><br>
-                    <div class="float-sm-left text-muted"><i class="fas fa-coffee"></i>1:00</div><br>
-                </th>
-                <th>
-                    <div class="float-sm-left"><i class="fas fa-store"></i>8:30 - 17:00</div><br>
-                    <div class="float-sm-left text-muted"><i class="fas fa-coffee"></i>1:00</div><br>
-                </th>
-                <th>
-                    <div class="float-sm-left"><i class="fas fa-store"></i>8:30 - 17:00</div><br>
-                    <div class="float-sm-left text-muted"><i class="fas fa-coffee"></i>1:00</div><br>
-                </th>
-                <th>10:30</th>
-            </tr>
-            }
+                @foreach (var day in Model.DaysOfWeek)
+                {
+                    
+                    <td>
+                        @if (week.ToList().Exists(c => c.Date.DayOfWeek == day))
+                        {
+
+                        <div class="float-sm-left"><i class="fas fa-store"></i>@Html.DisplayFor(model => week.ToList().First(c => c.Date.DayOfWeek == day).StartTime) - @Html.DisplayFor(model => week.ToList().First(c => c.Date.DayOfWeek == day).EndTime)</div><br>
+                             <div class="float-sm-left text-muted"><i class="fas fa-coffee"></i>@week.ToList().First(c => c.Date.DayOfWeek == day).BreakTime().TotalHours</div><br>
+                        }
+                    </td>
+                }
+
+                <th>@week.ToList().Sum(w => w.Duration().TotalHours)</th>
+                </tr>
+                    
+                }
 
         </tbody>
     </table>

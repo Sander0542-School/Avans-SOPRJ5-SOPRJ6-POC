@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BumboPOC.Web.Data.Models;
+using BumboPOC.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BumboPOC.Web.Controllers
@@ -12,8 +13,8 @@ namespace BumboPOC.Web.Controllers
         public IActionResult Index()
         {
 
-            
-    
+
+
             return View(Data.Models.User.All());
         }
 
@@ -23,7 +24,11 @@ namespace BumboPOC.Web.Controllers
 
             var user = Data.Models.User.Get(id);
 
-            return View(user);
+            return View(new UserDaysModel
+            {
+                User = user
+
+            });
         }
     }
 }
